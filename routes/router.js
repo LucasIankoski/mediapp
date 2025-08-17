@@ -1,8 +1,8 @@
-import { express } from "express";
-import appointmentController from "./AppointmentsController";
-import doctorController from "./DoctorController";
-import patientController from "./PatientController";
-import prescriptionController from "./PrescriptionController";
+import express from "express";
+import appointmentController from "./AppointmentsController.js";
+import doctorController from "./DoctorController.js";
+import patientController from "./PatientController.js";
+import prescriptionController from "./PrescriptionController.js";
 
 let router = express.Router();
 router.get("/", (req, res) => {
@@ -10,9 +10,9 @@ router.get("/", (req, res) => {
   res.status(200).json({ message: "Hello from the API!" });
 });
 
-router.use("/appointments", appointmentController);
-router.use("/doctors", doctorController);
-router.use("/patients", patientController);
-router.use("/prescriptions", prescriptionController);
+router.use("/", appointmentController);
+router.use("/", doctorController);
+router.use("/", patientController);
+router.use("/", prescriptionController);
 
 export default router;

@@ -1,4 +1,4 @@
-import { Appointment } from '../models/Appointment.js';
+import Appointment from '../models/Appointment.js';
 
 const appointmentRepository = {
   create: async (data) => {

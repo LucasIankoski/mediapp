@@ -1,4 +1,4 @@
-import prescriptionRepository from "../repositories/PrescriptionRepository";
+import prescriptionRepository from "../repositories/PrescriptionRepository.js";
 
 const getAllPrescriptions = async () => {
   return await prescriptionRepository.findAll();
