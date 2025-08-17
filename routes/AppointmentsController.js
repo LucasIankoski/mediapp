@@ -24,7 +24,8 @@ router.get("/appointments/:id", async (req, res) => {
 
 router.post("/appointments", async (req, res) => {
     try {
-        res.send(await appointmentService.createAppointment(req.body));
+        await appointmentService.createAppointment(req.body);
+        res.status(201).send();
     } catch (error) {
         console.error("Error creating appointment:", error);
         res.status(error.status || 500).send(error);

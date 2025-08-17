@@ -24,7 +24,8 @@ router.get("/prescriptions/:id", async (req, res) => {
 
 router.post("/prescriptions", async (req, res) => {
     try {
-        res.send(await prescriptionService.createPrescription(req.body));
+        await prescriptionService.createPrescription(req.body);
+        res.status(201).send();
     } catch (error) {
         console.error("Error creating prescription:", error);
         res.status(error.status || 500).send(error);

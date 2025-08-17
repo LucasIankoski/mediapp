@@ -24,7 +24,8 @@ router.get("/patients/:id", async (req, res) => {
 
 router.post("/patients", async (req, res) => {
     try {
-        res.send(await patientService.createPatient(req.body));
+        await patientService.createPatient(req.body);
+        res.status(201).send();
     } catch (error) {
         console.error("Error creating patient:", error);
         res.status(error.status || 500).send(error);
