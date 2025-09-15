@@ -2,7 +2,9 @@ import express from "express";
 import pkg from "body-parser";
 import router from "./routes/router.js";
 import db from "./database/database.js"
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 const { json, urlencoded } = pkg;
 

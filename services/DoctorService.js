@@ -27,10 +27,15 @@ const encryptPassword = async (password) => {
   return await bcrypt.hash(password, 10);
 }
 
+const getDoctorByLogin = async (login) => {
+  return await doctorRepository.getDoctorByLogin(login);
+}
+
 const doctorService = {
   getAllDoctors,
   getById,
   createDoctor,
+  getDoctorByLogin,
   updateDoctor,
   deleteDoctor
 }

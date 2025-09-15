@@ -1,3 +1,4 @@
+import { deleteModel } from 'mongoose';
 import Doctor from '../models/Doctor.js';
 
 const doctorRepository = {
@@ -20,7 +21,17 @@ const doctorRepository = {
 
   delete: async (id) => {
     return await Doctor.findByIdAndDelete(id);
-  }
+  },
+
+  getDoctorByLogin : async (login) => {
+    try {
+      return await Doctor.findOne({ "login": login });
+    } catch (error) {
+      console.error("Error fetching doctor by login:", error);
+      throw error;
+    }
+  },
+
 }
 
 export default doctorRepository;
