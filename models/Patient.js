@@ -1,4 +1,5 @@
 import { mongoose } from 'mongoose';
+import { isValidPhone } from '../utils/validators.js';
 
 const patientSchema = new mongoose.Schema({
     name: {
@@ -16,8 +17,12 @@ const patientSchema = new mongoose.Schema({
     },    
     phone: {
         type: String,
-        required: [true, 'Patient phone is required']
-    },    
+        required: [true, 'Patient phone is required'],
+        validate: {
+            validator: isValidPhone,
+            message: props => `${props.value} is not a valid phone number!`
+        },
+    },
     createdAt: {
         type: Date,
         default: Date.now

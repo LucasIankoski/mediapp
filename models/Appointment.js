@@ -1,4 +1,5 @@
 import { mongoose } from 'mongoose';
+import { isValidObjectId } from '../utils/validators.js';
 
 const appointmentSchema = new mongoose.Schema({
     date: {
@@ -7,11 +8,19 @@ const appointmentSchema = new mongoose.Schema({
     },
     doctorId: {
         type: String,
-        required: [true, 'Doctor ID is required']
+        required: [true, 'Doctor ID is required'],
+        validate: {
+            validator: isValidObjectId,
+            message: props => `${props.value} is not a valid Doctor ID!`
+        }
     },
     patientId: {
         type: String,
-        required: [true, 'Patient ID is required']
+        required: [true, 'Patient ID is required'],
+        validate: {
+            validator: isValidObjectId,
+            message: props => `${props.value} is not a valid Patient ID!`
+        }
     },
     createdAt: {
         type: Date,

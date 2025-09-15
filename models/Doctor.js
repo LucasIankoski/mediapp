@@ -1,4 +1,5 @@
 import { mongoose } from 'mongoose';
+import { isValidPhone } from '../utils/validators.js';
 
 const doctorSchema = new mongoose.Schema({
     name: {
@@ -17,8 +18,12 @@ const doctorSchema = new mongoose.Schema({
     },    
     phone: {
         type: String,
-        required: [true, 'Doctor phone is required']
-    },    
+        required: [true, 'Doctor phone is required'],
+        validate: {
+            validator: isValidPhone,
+            message: props => `${props.value} is not a valid phone number!`
+        },
+    },
     login: {
         type: String,
         required: [true, 'Doctor login is required'],
